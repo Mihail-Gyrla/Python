@@ -1,4 +1,3 @@
-import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -40,7 +39,6 @@ def test_01_form():
 
     green_highlighted_fields = driver.find_elements(By.CSS_SELECTOR, "div.alert.py-2.alert-success")
     assert len(green_highlighted_fields) == 9
+    driver.quit()
 
 
-if __name__ == "__main__":
-    pytest.main()

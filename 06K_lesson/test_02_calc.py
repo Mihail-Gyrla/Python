@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.webdriver import WebDriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -15,7 +16,7 @@ def driver():
     driver.quit()
 
 
-def test_calculator(driver):
+def test_calculator(driver: WebDriver):
     driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
 
     input = driver.find_element(By.CSS_SELECTOR, '#delay')
@@ -33,7 +34,4 @@ def test_calculator(driver):
 
     result = driver.find_element(By.CLASS_NAME, "screen").text
     assert result == "15"
-
-
-if __name__ == "__main__":
-    pytest.main()
+    driver.quit()
