@@ -45,11 +45,11 @@ class ShopPage:
 
     def checkout_page(self):
         first_name = self.driver.find_element(By.CSS_SELECTOR, "#first-name")
-        first_name.send_keys("Алена")
+        first_name.send_keys("Михаил")
         first_name.click()
 
         last_name = self.driver.find_element(By.CSS_SELECTOR, "#last-name")
-        last_name.send_keys("Китова")
+        last_name.send_keys("Гырла")
         last_name.click()
 
         postal_code = self.driver.find_element(By.CSS_SELECTOR, "#postal-code")
