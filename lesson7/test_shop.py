@@ -14,13 +14,11 @@ def driver():
 def test_shopping(driver):
     shop_page = ShopPage(driver)
     shop_page.open()
-    shop_page.authorization()
+    shop_page.authorization(login="standard_user", password="secret_sauce")
     shop_page.add_to_cart()
     shop_page.cart()
     shop_page.checkout_cart()
-    shop_page.checkout_page()
+    shop_page.checkout_page(first="Михаил",last="Гырла",code="620105")
 
     total = shop_page.get_total_price()
-    expected_total = 58.29
-    assert abs(total - expected_total) < 0.01, \
-        f"Ожидаемая сумма: {expected_total}, фактическая: {total}"
+    assert total == 58.29

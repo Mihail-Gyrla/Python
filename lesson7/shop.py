@@ -11,14 +11,16 @@ class ShopPage:
     def open(self):
         self.driver.get("https://www.saucedemo.com/")
 
-    def authorization(self):
+
+
+    def authorization(self, login, password):
         username = self.wait.until(EC.presence_of_element_located(
             (By.CSS_SELECTOR, '#user-name')))
-        username.send_keys("standard_user")
+        username.send_keys(login)
 
-        password = self.wait.until(EC.presence_of_element_located(
+        password_field = self.wait.until(EC.presence_of_element_located(
             (By.CSS_SELECTOR, '#password')))
-        password.send_keys("secret_sauce")
+        password_field.send_keys(password)
 
         login_button = (self.driver.find_element
                         (By.CSS_SELECTOR, '#login-button'))
@@ -43,7 +45,7 @@ class ShopPage:
                            (By.CSS_SELECTOR, "#checkout"))
         checkout_button.click()
 
-    def checkout_page(self):
+    def checkout_page(self,first, last, code):
         first_name = self.driver.find_element(By.CSS_SELECTOR, "#first-name")
         first_name.send_keys("Михаил")
         first_name.click()

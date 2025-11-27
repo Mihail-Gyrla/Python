@@ -20,22 +20,12 @@ class CalculatorPage:
         delay_input.clear()
         delay_input.send_keys("45")
 
-    def calculator_button(self):
-        button_7 = self.driver.find_element(By.XPATH, "//span[text()='7']")
-        button_7.click()
-        button_plus = self.driver.find_element(By.XPATH, "//span[text()='+']")
-        button_plus.click()
-        button_8 = self.driver.find_element(By.XPATH, "//span[text()='8']")
-        button_8.click()
-        button_equals = (self.driver.find_element
-                         (By.XPATH, "//span[text()='=']"))
-        button_equals.click()
+    def click_calculator_button(self, button: str) -> None:
+        button = self.driver.find_element(By.XPATH, f'//span[text()="{button}"]')
+        button.click()
 
-    def get_result(self):
+    def wait_for_result(self):
         WebDriverWait(self.driver, 50).until(
             EC.text_to_be_present_in_element(
                 (By.CSS_SELECTOR, ".screen"), '15')
         )
-
-        result = self.driver.find_element(By.CSS_SELECTOR, ".screen").text
-        return result
